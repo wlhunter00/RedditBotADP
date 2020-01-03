@@ -2,15 +2,16 @@
 import praw
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+import re
 
 
 # Main function that runs everything
 def main():
     info = openFile('loginInfo.txt')
-    # reddit = loginReddit(info)
-    # subreddit = loadSubreddit(reddit, info[5])
-    loadGDrive(info[6])
-    # parseComments(subreddit)
+    reddit = loginReddit(info)
+    subreddit = loadSubreddit(reddit, info[5])
+    listOfResponses = loadGDrive(info[6])
+    parseComments(subreddit, listOfResponses)
 
 
 # Opening the file with the login info
@@ -23,6 +24,10 @@ def openFile(filename):
     return info
 
 
+def findWholeWord(w):
+    return re.compile(r'({0})'.format(w), flags=re.IGNORECASE).search
+
+
 # Loging into reddit
 def loginReddit(info):
     return praw.Reddit(user_agent=info[0],
@@ -32,7 +37,7 @@ def loginReddit(info):
 
 # load Subreddit
 def loadSubreddit(reddit, subreddit):
-    subreddit = reddit.subreddit(subreddit)
+    return reddit.subreddit(subreddit)
 
 
 # Load Google drive
@@ -47,21 +52,25 @@ def loadGDrive(spreadsheet):
 
     list_of_hashes = sheet.get_all_records()
     print(list_of_hashes)
+    for pair in list_of_hashes:
+        if pair["Comment"] == "Reddit":
+            print(pair["Response"])
+    return list_of_hashes
 
 
 # Parse the comments
-def parseComments(subreddit):
+def parseComments(subreddit, listOfResponses):
     # for submission in subreddit.stream.submissions():
-    for submission in subreddit.hot(limit=10):
+    for submission in subreddit.hot(limit=2):
         print("title: ", submission.title.encode("utf-8"))
-        print("score: ", submission.score)
         submission.comments.replace_more(limit=0)
         for comment in submission.comments.list():
-            try:
-                print("comment by ", comment.author.name.encode("utf-8"),
-                      ": ", comment.body.encode("utf-8"))
-            except:
-                print("error")
+            for response in listOfResponses:
+                if findWholeWord(response["Comment"])(comment.body):
+                    print("Match", response["Response"], comment.body.encode("utf-8"))
+                    comment.reply(response["Response"])
+                    break
+
 
 if __name__ == "__main__":
     main()
