@@ -7,7 +7,7 @@ import re
 
 # Main function that runs everything
 def main():
-    info = openFile('loginInfo.txt')
+    info = openFile('C:\\Users\\William\\Documents\\GitHub\\RedditBotADP\\loginInfo.txt')
     reddit = loginReddit(info)
     subreddit = loadSubreddit(reddit, info[5])
     listOfResponses = loadGDrive(info[6])
@@ -44,7 +44,7 @@ def loadSubreddit(reddit, subreddit):
 def loadGDrive(spreadsheet):
     scope = ['https://spreadsheets.google.com/feeds',
              'https://www.googleapis.com/auth/drive']
-    creds = ServiceAccountCredentials.from_json_keyfile_name('./client_secret.json', scope)
+    creds = ServiceAccountCredentials.from_json_keyfile_name('C:\\Users\\William\\Documents\\GitHub\\RedditBotADP\\client_secret.json', scope)
     client = gspread.authorize(creds)
 
     # Pick spreadsheet in the logininfo.txt
