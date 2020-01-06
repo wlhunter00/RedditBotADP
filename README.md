@@ -27,7 +27,7 @@ This reddit bot can be used for any subreddit, and look for any words/users.
   * [Preparing Login Info](#preparing-logininfo)
 * [Walkthroughs](#Walkthroughs)
   * [Functions Walkthrough](#functions-walkthrough)
-  * [Text file Walkthrough](#textfile-walkthrough)
+  * [Text file Walkthrough](#text-file-walkthrough)
   * [Spreadsheet Walkthrough](#spreadsheet-walkthrough)
 
 ## Project Status
