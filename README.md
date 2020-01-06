@@ -35,16 +35,16 @@ This reddit bot can be used for any subreddit, and look for any words/users.
 
 Stable build is currently ready.
 
-##### **Recently Added**
+### **Recently Added**
 - [X] Created this README as a guide to the application.
 - [X] Allowed for users to be parsed
 
-#### To Do:
+### To Do:
 - [ ] Allow the responses from the bot to interact with the comment.
 - [ ] Create "Smart" responses that can answer questions.
 - [ ] Allow the option to search multiple subreddits at once.
 
-#### Bugs:
+### Bugs:
 - No bugs found yet.
 
 ## Technologies
