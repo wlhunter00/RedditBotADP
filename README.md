@@ -2,8 +2,7 @@
 ## Introduction
 This is a reddit bot that I created that will parse through all of the comments in a subreddit, and reply to them based on certain keywords or certain users that did the commenting. The list of users and words to look for are stored within a Google Sheets document. The bot finds matches using Regular Expressions. This bot can be scaled to look for many different things in the comment, such as comment score, and the type of reply can also be scaled to be more complex.
 
-This reddit bot can be used for any subreddit, and look for any words/users. It can be scaled however the user my want it.
-
+This reddit bot can be used for any subreddit, and look for any words/users.
 #### Process
 1. Load all information needed from a text document.
 2. Login to Reddit's API based on credentials given.
