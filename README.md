@@ -92,7 +92,7 @@ script: Response Bot:v1.0.2:(by /u/wlhunter00);client_id;client_scrent;BotName12
 
 The lack of spaces between the semicolons are very important.
 
-Look at [Text file Walkthrough](#textfile-walkthrough) for more details on what that document operates.
+Look at [Text File Walkthrough](#text-file-walkthrough) for more details on what that document operates.
 
 ## Walkthroughs
 
