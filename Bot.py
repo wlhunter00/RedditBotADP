@@ -8,7 +8,7 @@ import random
 
 # Main function that runs everything
 def main():
-    info = openFile('C:\\Users\\William\\Documents\\GitHub\\RedditBotADP\\loginInfo.txt')
+    info = openFile('./loginInfo.txt')
     reddit = loginReddit(info)
     subreddit = loadSubreddit(reddit, info[5])
     responses = loadGDrive(info[6], info[7])
@@ -61,7 +61,7 @@ def loadGDrive(spreadsheet, numberOfSheets):
     # Login to Google API using OAuth
     scope = ['https://spreadsheets.google.com/feeds',
              'https://www.googleapis.com/auth/drive']
-    creds = ServiceAccountCredentials.from_json_keyfile_name('C:\\Users\\William\\Documents\\GitHub\\RedditBotADP\\client_secret.json', scope)
+    creds = ServiceAccountCredentials.from_json_keyfile_name('./client_secret.json', scope)
     client = gspread.authorize(creds)
     # Do these twice, the first sheet being the comment parsing
     # The second sheet being user parsing
