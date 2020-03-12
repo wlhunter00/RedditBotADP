@@ -104,10 +104,10 @@ def scrollSubreddit(subreddit, responses, botName):
                     break
             # If the post hasn't been commented, and there is a
             # user sheet ready.
-            if ((commented == False) and (responses[0] > 1)):
+            if ((commented is False) and (responses[0] > 1)):
                 for response in responses[2]:
                     # Checks usernames
-                    if submission.author.name.lower() == response['Username'].lower():
+                    if comment.author.name.lower() == response['Username'].lower():
                         # Respond to that comment
                         respondToComment(comment, response, botName)
 
